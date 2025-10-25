@@ -1,0 +1,212 @@
+/* ──────────────────────────────────────────────────────────────
+   Global Styles – copy‑paste this into src/index.css (or App.css)
+   ────────────────────────────────────────────────────────────── */
+
+/* 1. Import Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* 2. Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 3. Base */
+html {
+  font-size: 100%;               /* 16px baseline */
+}
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+               Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+               'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 50%, #F3E8FF 100%);
+  color: #1F2937;
+  line-height: 1.5;
+}
+
+/* 4. Container (used by every page) */
+.container {
+  max-width: minmax(320px, 1000px);
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  position: relative;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+}
+
+/* decorative circles */
+.container::before,
+.container::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: .3;
+}
+.container::before {               /* top‑left */
+  top: -50px; left: -50px;
+  width: 150px; height: 150px;
+  background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+}
+.container::after {                /* bottom‑right */
+  bottom: -50px; right: -50px;
+  width: 150px; height: 150px;
+  background: radial-gradient(circle, #a78bfa 0%, transparent 70%);
+}
+
+/* 5. Card (event, registration, form card…) */
+.card {
+  background: linear-gradient(90deg, #fff, #f9fafb);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  position: relative;
+  z-index: 1;
+  transition: transform .3s ease, box-shadow .3s ease;
+  border-left: 4px solid #3b82f6;      /* default blue accent */
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.2);
+}
+
+/* green accent (signup, registered events) */
+.card.green-accent { border-left-color: #10b981; }
+
+/* alternating backgrounds for lists */
+.card:nth-child(even)           { background: linear-gradient(90deg, #f9fafb, #f3f4f6); }
+.card.registered:nth-child(odd) { background: linear-gradient(90deg, #e0f2fe, #bae6fd); }
+.card.registered:nth-child(even){ background: linear-gradient(90deg, #f3e8ff, #ddd6fe); }
+
+/* 6. Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .6rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  font-size: .875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+.btn:disabled { opacity: .7; cursor: not-allowed; }
+
+/* primary (blue) */
+.btn-primary {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(90deg, #1e40af, #3b82f6);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+
+/* success (green) */
+.btn-success {
+  background: linear-gradient(90deg, #10b981, #34d399);
+  color: #fff;
+}
+.btn-success:hover:not(:disabled) {
+  background: linear-gradient(90deg, #059669, #10b981);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+
+/* danger (red) */
+.btn-danger {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+  color: #fff;
+}
+.btn-danger:hover:not(:disabled) {
+  background: linear-gradient(90deg, #b91c1c, #dc2626);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+
+/* 7. Form groups */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: .5rem;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: .75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f9fafb;
+  transition: border-color .3s, box-shadow .3s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #3b82f6;                     /* default blue */
+  box-shadow: 0 0 0 3px rgba(59,130,246,.1);
+}
+
+/* green focus for signup */
+.form-group.green-accent input:focus,
+.form-group.green-accent textarea:focus,
+.form-group.green-accent select:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16,185,129,.1);
+}
+.form-group textarea { min-height: 120px; resize: vertical; }
+
+/* 8. Alerts */
+.error,
+.success {
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  animation: fadeIn .5s ease-in;
+}
+.error   { background: linear-gradient(90deg, #fee2e2, #fecaca); color: #b91c1c; }
+.success { background: linear-gradient(90deg, #dcfce7, #bbf7d0); color: #15803d; }
+
+/* 9. Headings */
+h1, h2, h3 { color: #1e40af; transition: color .3s; }
+h1:hover, h2:hover, h3:hover { color: #2563eb; }
+
+h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 2.5rem; text-align: center; text-shadow: 0 2px 4px rgba(0,0,0,.1); }
+h2 { font-size: 1.75rem; font-weight: 600; margin: 2.5rem 0 1.5rem; border-bottom: 3px solid #3b82f6; padding-bottom: .75rem; }
+h3 { font-size: 1.25rem; font-weight: 600; margin: 0 0 .75rem; }
+
+/* 10. Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 11. Responsive */
+@media (max-width: 768px) {
+  .container { margin: 2rem auto; padding: 0 1rem; }
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  .card { padding: 1rem; }
+  .btn { padding: .5rem 1rem; font-size: .875rem; }
+}
